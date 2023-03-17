@@ -37,14 +37,14 @@ public class TotalTrialBalanceController {
 			@RequestParam String callResult) {
 		System.out.println(accountPeriodNo);
 		System.out.println(callResult);
-//		HashMap<String, Object> params = new HashMap<>();
-//		params.put("accountPeriodNo", accountPeriodNo);
-//		params.put("callResult", callResult);
+		HashMap<String, Object> params = new HashMap<>();
+		params.put("accountPeriodNo", accountPeriodNo);
+		params.put("callResult", callResult);
 
-//		HashMap<String, Object> closingResult = trialBalanceService.findEarlyStatements(params);
-//
-//		return closingResult;
-		return null;
+		HashMap<String, Object> closingResult = trialBalanceService.findEarlyStatements(params);
+
+		return closingResult;
+		
 	}
 //
 //	@GetMapping("/searchTotalTrialBalance")
@@ -75,7 +75,8 @@ public class TotalTrialBalanceController {
 	@GetMapping("/totaltrialbalance")
 	public HashMap<String, Object> findTotalTrialBalance(@RequestParam("accountPeriodNo") String accountPeriodNo,
 			@RequestParam("callResult") String callResult) {
-
+System.out.println(accountPeriodNo);
+System.out.println(callResult);
 		HashMap<String, Object> map = new HashMap<>();
 		try {
 			HashMap<String, Object> totaltrialList = trialBalanceService.findTotalTrialBalance(accountPeriodNo,
@@ -87,6 +88,7 @@ public class TotalTrialBalanceController {
 		}
 
 		return map;
+//		return null;
 	}
 
 	@PostMapping("/totaltrialbalancecancle")
