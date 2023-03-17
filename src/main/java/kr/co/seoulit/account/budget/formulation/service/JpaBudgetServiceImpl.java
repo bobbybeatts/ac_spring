@@ -18,7 +18,12 @@ public class JpaBudgetServiceImpl implements JpaBudgetService {
    }
 
    @Override
-   public ArrayList<BudgetEntity> findBudget(String deptCode, String workplaceCode, String accountPeriodNo, String accountInnerCode, String budgetingCode) {
+   public ArrayList<BudgetEntity> findBudget(BudgetEntity budgetEntity) {
+      String deptCode = budgetEntity.getDeptCode();
+      String workplaceCode = budgetEntity.getWorkplaceCode();
+      String accountPeriodNo = budgetEntity.getAccountPeriodNo();
+      String accountInnerCode = budgetEntity.getAccountInnerCode();
+      String budgetingCode = budgetEntity.getBudgetingCode();
       return budgetRepository.findByDeptCodeAndWorkplaceCodeAndAccountInnerCodeAndAccountPeriodNoAndBudgetingCode(deptCode, workplaceCode, accountInnerCode, accountPeriodNo, budgetingCode);
    }
 }

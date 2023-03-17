@@ -53,17 +53,27 @@ public class FormulationController {
 //        return map;
 //    }
 
-    // JPA로 변경중 ======== 조회 =========
+    // JPA로 구현 ======== 조회 =========
+//    @GetMapping("/budget")
+//    public HashMap<String ,Object> findBudget(
+//            @RequestParam("deptCode") String deptCode,
+//            @RequestParam("workplaceCode") String workplaceCode,
+//            @RequestParam("accountPeriodNo") String accountPeriodNo,
+//            @RequestParam("accountInnerCode") String accountInnerCode,
+//            @RequestParam("budgetingCode") String budgetingCode
+//    ) {
+//        HashMap<String , Object> map =new HashMap<>();
+//        ArrayList<BudgetEntity> preBudgetList = jpaBudgetService.findBudget(deptCode,workplaceCode,accountPeriodNo,accountInnerCode,budgetingCode);
+//        map.put("currentBudgetList" , preBudgetList);
+//        return map;
+//    }
+
+    // JPA로 구현 ======== 조회 =========
+    // 위와 다르게 BudgetEntity 바로 맵핑을 시켜서 받아왔음. 그러나 결국 마지막 쿼리메소드 부분에서 String자료형이 아닌 객체타입을 넣어주니 팩토리 오류가 발생함.
     @GetMapping("/budget")
-    public HashMap<String ,Object> findBudget(
-            @RequestParam("deptCode") String deptCode,
-            @RequestParam("workplaceCode") String workplaceCode,
-            @RequestParam("accountPeriodNo") String accountPeriodNo,
-            @RequestParam("accountInnerCode") String accountInnerCode,
-            @RequestParam("budgetingCode") String budgetingCode
-    ) {
+    public HashMap<String ,Object> findBudget(BudgetEntity budgetEntity) {
         HashMap<String , Object> map =new HashMap<>();
-        ArrayList<BudgetEntity> preBudgetList = jpaBudgetService.findBudget(deptCode,workplaceCode,accountPeriodNo,accountInnerCode,budgetingCode);
+        ArrayList<BudgetEntity> preBudgetList = jpaBudgetService.findBudget(budgetEntity);
         map.put("currentBudgetList" , preBudgetList);
         return map;
     }

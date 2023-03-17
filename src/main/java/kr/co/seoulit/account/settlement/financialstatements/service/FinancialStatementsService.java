@@ -10,4 +10,10 @@ public interface FinancialStatementsService {
 
 
 	public HashMap<String, Object> getMonthIncome(String searchDate);
+
+	public HashMap<String, Object> findCapitalStatement(String accountPeriodNo, String callResult);
+
+	public HashMap<String, Object> findAccountingStatement(String accountPeriodNo, String callResult);
+
+
 }

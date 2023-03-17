@@ -10,9 +10,9 @@
 		<result property="accountName" column="ACCOUNT_NAME"/>
 		<result property="accountCode" column="ACCOUNT_CODE"/>
 		<result property="balanceDetail" column="BALANCE_DETAIL" />
-		<result property="balanceSummary" column="BALANCE_SUMMARY"  />
+		<result property="balanceDetailSummary" column="BALANCE_DETAIL_SUMMARY"  />
 		<result property="preBalanceDetail" column="PRE_BALANCE_DETAIL"   />
-		<result property="preBalanceSummary" column="PRE_BALANCE_SUMMARY"  />
+		<result property="preBalanceDetailSummary" column="PRE_BALANCE_DETAIL_SUMMARY"  />
 	   </resultMap>
 	   
 	   <resultMap id="accountingSettlementStatusBeanResult" type="kr.co.seoulit.account.posting.business.to.AccountingSettlementStatusBean">
@@ -20,6 +20,7 @@
 	        <result property="totalTrialBalance" column="TOTAL_TRIAL_BALANCE"/>
 	        <result property="incomeStatement" column="INCOME_STATEMENT"/>
 	        <result property="financialPosition" column="FINANCIAL_POSITION"/>
+		   <result property="capitalStatement" column="CAPITAL_STATEMENT"/>
 	    </resultMap>
 
 	<parameterMap id="financialPositionParams" type="java.util.HashMap">

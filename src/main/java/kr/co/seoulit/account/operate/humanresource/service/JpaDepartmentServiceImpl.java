@@ -6,6 +6,7 @@ import kr.co.seoulit.account.operate.humanresource.repository.JpaDepartmentRepos
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -29,14 +30,22 @@ public class JpaDepartmentServiceImpl implements JpaDepartmentService {
         return deptList;
 
     }
-
-
+//    @Override
+//    public List<DepartmentEntity> findDetailDeptList(String workplaceCode) {
+//        // TODO Auto-generated method stub
+//
+//        List<DepartmentEntity> detailDeptList = jpaDepartmentRepository.findByWorkplaceCode(workplaceCode);
+//        System.out.println("부서 디테일부서리스트 확인:: " + detailDeptList);
+//        return detailDeptList;
+//    }
     @Override
-    public List<DepartmentEntity> findDetailDeptList(String workplaceCode) {
+    public ArrayList<DepartmentEntity> findDetailDeptList(DepartmentEntity departmentEntity) {
         // TODO Auto-generated method stub
-
-        List<DepartmentEntity> detailDeptList = jpaDepartmentRepository.findByWorkplaceCode(workplaceCode);
+        String workplaceCode = departmentEntity.getWorkplaceCode();
+        ArrayList<DepartmentEntity> detailDeptList = jpaDepartmentRepository.findByWorkplaceCode(workplaceCode);
         System.out.println("부서 디테일부서리스트 확인:: " + detailDeptList);
         return detailDeptList;
     }
+
+
 }

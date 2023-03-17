@@ -22,8 +22,8 @@ public class JpaPeriodServiceImpl implements JpaPeriodService{
     }
 
     @Override
-    public PeriodEntity findTPeriodNo(LocalDate periodStartDate, LocalDate periodEndDate) {
-        PeriodEntity map = jpaPeriodRepository.findAccountPeriodNoByPeriodStartDateAndPeriodEndDate(periodStartDate, periodEndDate);
+    public PeriodEntity findTPeriodNo(String yearFirst, String yearLast) {
+        PeriodEntity map = jpaPeriodRepository.findAccountPeriodNoByPeriodStartDateAndPeriodEndDate(yearFirst, yearLast);
         return map;
     }
 

@@ -64,7 +64,7 @@
                 #{slipStatus},
                 #{approvalEmpCode},
                 #{approvalDate})
-        ]]>
+        ]]>+
 	</insert>
 	<update id="updateapproveSlip"
 		parameterType="kr.co.seoulit.account.posting.business.to.SlipBean">
@@ -104,10 +104,12 @@
 		FROM slip s
 		WHERE s.REPORTING_DATE BETWEEN #{fromDate} AND #{toDate}
 		AND NOT s.SLIP_STATUS IN ('승인요청')
+		AND NOT s.SLIP_STATUS IN ('승인완료')
 		<if test='slipStatus!="전체"'>
 			AND s.SLIP_STATUS = #{slipStatus}
 		</if>
 		ORDER BY s.REPORTING_DATE, SLIP_NO
+
 	</select>
 
 	<select id="selectApprovalSlipList"
@@ -167,7 +169,7 @@
             Authorization_status as authorizationStatus
             Dept_code as deptCode
             Expense_report as expenseReport
-            Reporting_date as  reportingDate
+            REPORTING_DATE as  reportingDate
             Reporting_emp_code as reportingEmpCode
             Slip_status as slipStatus
             Slip_type as slipType

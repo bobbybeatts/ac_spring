@@ -58,6 +58,14 @@ public class SlipController {
 		return slipFormList;
 	}
 
+	// JPA 전표조회 구현 실패. SQL 내부표기익셉션 확인바람.
+//	@GetMapping("/rangedsliplist")
+//	public ArrayList<SlipEntity> findRangedSlipList(@RequestParam("startDate") String startDate,
+//												  @RequestParam("endDate") String endDate, @RequestParam("slipStatus") String slipStatus) {
+//		ArrayList<SlipEntity> slipFormList = jpaSlipService.findRangedSlipList(startDate,endDate,slipStatus);
+//		return slipFormList;
+//	}
+
 	// ====================전표 삭제======================
 	@DeleteMapping("/deleteSlip")
 	public void removeSlip(@RequestParam String slipNo) {

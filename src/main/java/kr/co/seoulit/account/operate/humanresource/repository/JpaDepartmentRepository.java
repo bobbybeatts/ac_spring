@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -15,5 +16,8 @@ public interface JpaDepartmentRepository extends JpaRepository<DepartmentEntity,
     List<DepartmentSelectList> findDistinctWorkplaceCode();
     //테스트할예정 List<DepartmentSelectList> findDistinctByWorkplaceCode(String workplaceCode);
     List<DepartmentEntity> findAllBy();
-    List<DepartmentEntity> findByWorkplaceCode(String workplaceCode);
+    ArrayList<DepartmentEntity> findByWorkplaceCode(String workplaceCode);
+
+    // value오류가 생김.
+    //    List<DepartmentEntity> findByWorkplaceCode(DepartmentEntity departmentEntity);
 }
