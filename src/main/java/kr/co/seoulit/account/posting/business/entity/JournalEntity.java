@@ -12,7 +12,6 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @Data
 public class JournalEntity {
-
     @Id
     private String journalNo;
     private String slipNo;
@@ -21,13 +20,4 @@ public class JournalEntity {
     private String customerCode;
     private String leftDebtorPrice;
     private String rightCreditsPrice;
-//    private List<JournalDetailBean> journalDetailList;
-//    private String id;
-//    private String accountCode;
-//    private String accountName;
-//    private String customerName;
-//    private String price;
-//    private String deptCode;
-//    private String accountPeriodNo;
-
 }

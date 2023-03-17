@@ -8,5 +8,7 @@ import java.util.List;
 public interface JpaPeriodService {
     List<PeriodEntity> findPeriodNo();
 
+
     PeriodEntity findTPeriodNo(String periodStartDate, String periodEndDate);
+
 }

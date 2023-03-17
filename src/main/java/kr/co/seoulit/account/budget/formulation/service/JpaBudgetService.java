@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 public interface JpaBudgetService {
     void save(BudgetEntity budgetEntity);
-
-    ArrayList<BudgetEntity> findBudget(String deptCode, String workplaceCode, String accountPeriodNo, String accountInnerCode, String budgetingCode);
+    ArrayList<BudgetEntity> findBudget(BudgetEntity budgetEntity);
 }
 

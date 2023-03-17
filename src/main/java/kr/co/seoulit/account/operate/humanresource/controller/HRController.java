@@ -131,10 +131,18 @@ public class HRController {
     }*/
 
     // =================== JPA구현 ===================
+//    @GetMapping("/detaildeptlist")
+//    public HashMap<String, Object> findDetailDeptList(@RequestParam("workplaceCode") String workplaceCode){
+//        HashMap<String, Object> map =new HashMap<>();
+//        List<DepartmentEntity> detailDeptList = jpaDepartmentService.findDetailDeptList(workplaceCode);
+//        map.put("detailDeptList", detailDeptList);
+//        return map;
+//    }
+
     @GetMapping("/detaildeptlist")
-    public HashMap<String, Object> findDetailDeptList(@RequestParam("workplaceCode") String workplaceCode){
-        HashMap<String, Object> map =new HashMap<>();
-        List<DepartmentEntity> detailDeptList = jpaDepartmentService.findDetailDeptList(workplaceCode);
+    public HashMap<String, Object> findDetailDeptList(DepartmentEntity departmentEntity){
+        HashMap<String, Object> map = new HashMap<>();
+        ArrayList<DepartmentEntity> detailDeptList = jpaDepartmentService.findDetailDeptList(departmentEntity);
         map.put("detailDeptList", detailDeptList);
         return map;
     }

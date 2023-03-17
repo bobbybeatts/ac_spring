@@ -47,6 +47,7 @@
 					   ACCOUNT A 
 				 WHERE J.ACCOUNT_INNER_CODE = A.ACCOUNT_INNER_CODE 
 				   AND J.SLIP_NO = #{slipNo}
+				 ORDER BY J.JOURNAL_NO
 		 ]]>
 		 </select>
 </mapper>

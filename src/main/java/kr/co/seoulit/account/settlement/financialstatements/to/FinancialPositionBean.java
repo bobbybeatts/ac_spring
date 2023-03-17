@@ -8,9 +8,9 @@ public class FinancialPositionBean extends BaseBean {
     private String accountName;
     private String accountCode;
     private long balanceDetail;
-    private long balanceSummary;
+    private long balanceDetailSummary;
     private long preBalanceDetail;
-    private long preBalanceSummary;
+    private long preBalanceDetailSummary;
     private long isThisYear;
 
     public long getLev() {
@@ -53,12 +53,12 @@ public class FinancialPositionBean extends BaseBean {
         this.balanceDetail = balanceDetail;
     }
 
-    public long getBalanceSummary() {
-        return balanceSummary;
+    public long getBalanceDetailSummary() {
+        return balanceDetailSummary;
     }
 
-    public void setBalanceSummary(long balanceSummary) {
-        this.balanceSummary = balanceSummary;
+    public void setBalanceDetailSummary(long balanceDetailSummary) {
+        this.balanceDetailSummary = balanceDetailSummary;
     }
 
     public long getPreBalanceDetail() {
@@ -69,12 +69,12 @@ public class FinancialPositionBean extends BaseBean {
         this.preBalanceDetail = preBalanceDetail;
     }
 
-    public long getPreBalanceSummary() {
-        return preBalanceSummary;
+    public long getPreBalanceDetailSummary() {
+        return preBalanceDetailSummary;
     }
 
-    public void setPreBalanceSummary(long preBalanceSummary) {
-        this.preBalanceSummary = preBalanceSummary;
+    public void setPreBalanceDetailSummary(long preBalanceDetailSummary) {
+        this.preBalanceDetailSummary = preBalanceDetailSummary;
     }
 
     public long getIsThisYear() {

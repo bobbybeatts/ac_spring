@@ -55,6 +55,7 @@ public class PeriodNoController {
 	@GetMapping("/tPeriodNoList")
 	public PeriodEntity findPeriodNo(@RequestParam("yearFirst") String yearFirst,
 			@RequestParam("yearLast") String yearLast) {
+
 		PeriodEntity periodEntity = jpaPeriodService.findTPeriodNo(yearFirst, yearLast);
 		return periodEntity;
 	}

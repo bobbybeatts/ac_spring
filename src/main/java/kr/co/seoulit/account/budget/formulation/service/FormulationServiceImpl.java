@@ -30,25 +30,18 @@ public class FormulationServiceImpl implements FormulationService {
 
     public BudgetBean findBudgetorganization(BudgetBean bean) {
         // TODO Auto-generated method stub
-
         return  formulationDAO.selectBudgetorganization(bean);
     }
 
     @Override
     public void findBudgetList(BudgetBean bean) {
         // TODO Auto-generated method stub
-
         formulationDAO.selectBudgetList(bean);
-
     }
 
     @Override
     public HashMap<String, Object> findBudgetStatus(HashMap<String, Object> params) {
         // TODO Auto-generated method stub
-//      HashMap<String, Object> map = new HashMap();
-//      System.out.println("AccountPeriodNo = " + bean.getAccountPeriodNo());
-//      System.out.println("WorkplaceCode = " + bean.getWorkplaceCode());
-//      System.out.println("DeptCode = " + bean.getDeptCode());
         HashMap<String, Object> budgetStatus = formulationDAO.selectBudgetStatus(params);
         System.out.println("budgetStatus = " + budgetStatus );
         return budgetStatus;

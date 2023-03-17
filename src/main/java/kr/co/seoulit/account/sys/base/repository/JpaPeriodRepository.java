@@ -11,5 +11,7 @@ import java.util.ArrayList;
 public interface JpaPeriodRepository extends CrudRepository<PeriodEntity, String> {
     ArrayList<PeriodEntity> findAllBy();
 
+
     PeriodEntity findAccountPeriodNoByPeriodStartDateAndPeriodEndDate(String periodStartDate, String periodEndDate);
+
 }

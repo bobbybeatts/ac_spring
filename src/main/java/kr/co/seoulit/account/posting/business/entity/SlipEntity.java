@@ -8,17 +8,16 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "slip")
-@NoArgsConstructor
 @Data
 public class SlipEntity {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private String slipNo;
+    private Long slipNo;
     private String accountPeriodNo;
     private String deptCode;
     private String slipType;
     private String expenseReport;
     private String reportingEmpCode;
+    private String reportingDate;
     private String approvalEmpCode;
     private String approvalDate;
     private String slipStatus;
@@ -27,7 +26,6 @@ public class SlipEntity {
 //    private String id;
 //    private String authorizationStatus;
 //    private String reportingEmpName;
-//    private String reportingDate;
 //    private String balanceDivision;
 //    private String positionCode;
 }

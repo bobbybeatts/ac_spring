@@ -53,6 +53,7 @@
 					   ACCOUNT A 
 				 WHERE J.ACCOUNT_INNER_CODE = A.ACCOUNT_INNER_CODE 
 				   AND J.SLIP_NO = #{slipNo}
+				 ORDER BY J.JOURNAL_NO
 			 ]]>
 	</select>
 	<insert id="insertJournal"
@@ -133,6 +134,23 @@
 		
 		 ]]>
 	</select>
+
+	<select id="addJournalDetailList" parameterType="String"
+		resultType="kr.co.seoulit.account.posting.business.to.JournalDetailBean">
+		<![CDATA[
+			SELECT acd.ACCOUNT_CONTROL_CODE ,
+				acd.ACCOUNT_CONTROL_NAME , 
+				acd.ACCOUNT_CONTROL_TYPE , 
+				acd.DESCRIPTION 
+			FROM ACCOUNT_CONTROL_DETAIL acd ,
+				ACCOUNT_CONTROL_CODE acc 
+			WHERE acc.ACCOUNT_INNER_CODE  = #{accountCode}
+			AND acc.ACCOUNT_CONTROL_CODE = acd.ACCOUNT_CONTROL_CODE 
+			ORDER BY acd.ACCOUNT_CONTROL_CODE
+		
+		 ]]>
+	</select>
+
 	<select id="selectJournalDetailDescriptionName"
 		parameterType="String"
 		resultType="kr.co.seoulit.account.posting.business.to.JournalDetailBean">
@@ -177,7 +195,7 @@
 					DESCRIPTION
 				)VALUES(
 					#{journalNo},
-					JOURNAL_DETAIL_NO_SEQUENCE.NEXTVAL,
+					JOURNAL_DETAIL_NO_SEQUENCES.NEXTVAL,
 					#{accountControlCode},
 					#{journalDescription}
 				)
