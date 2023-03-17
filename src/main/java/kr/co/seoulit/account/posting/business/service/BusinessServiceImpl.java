@@ -42,7 +42,7 @@ public class BusinessServiceImpl implements BusinessService {
 		System.out.println("findSelect: " + findSelect);
 		System.out.println("findSearch: " + findSearch);
 
-		journalDAO.updateJournalDetail(journalDetailBean); // 분개번호로 내용만 업데이트함
+		journalDAO.updateJournalDetailList(journalDetailBean); // 분개번호로 내용만 업데이트함
 		if (findSelect || findSearch)
 			dName = journalDAO.selectJournalDetailDescriptionName(journalDetailNo);
 
@@ -77,7 +77,7 @@ public class BusinessServiceImpl implements BusinessService {
 //		return journalList;
 //	}
 	@Override
-	public ArrayList<JournalBean> findRangedJournalList(HashMap<String, Object> map){
+	public ArrayList<JournalBean> findRangedJournalList(HashMap<String, Object> map) {
 		ArrayList<JournalBean> journalList = journalDAO.selectRangedJournalList(map);
 
 		return journalList;
@@ -121,21 +121,38 @@ public class BusinessServiceImpl implements BusinessService {
 		System.out.println("AppServiceImpl_addSlip 시작");
 		StringBuffer slipNo = new StringBuffer();
 		int sum = 0;
-		
-		String slipNoDate = slipBean.getReportingDate().replace("-",""); // 2021-10-27 -> 20211027
+
+		String slipNoDate = slipBean.getReportingDate().replace("-", ""); // 2021-10-27 -> 20211027
 		// 처음에 빈값
 		slipNo.append(slipNoDate); // 20200118
 		slipNo.append("SLIP"); // 20200118SLIP
 		String code = "0000" + (slipDAO.selectSlipCount(slipNoDate) + 1) + ""; // 00001 //오늘 작성한 전표의 카운터 +1
 		slipNo.append(code.substring(code.length() - 5)); // 00001 10이상 넘어가는숫자들 처리
-//		System.out.println("slipNo: " + slipNo.toString());
+
 		slipBean.setSlipNo(slipNo.toString()); // 20200118SLIP00001
+		
 		slipDAO.insertSlip(slipBean);
 		for (JournalBean journalBean : slipBean.getJournalBean()) {
 			String journalNo = journalDAO.selectJournalName(slipBean.getSlipNo());
 			journalBean.setJournalNo(journalNo);
 			journalBean.setSlipNo(slipNo.toString());
+
+			if (journalBean.getLeftDebtorPrice() == "") {
+				journalBean.setLeftDebtorPrice("0");
+			} else if (journalBean.getRightCreditsPrice() == "") {
+				journalBean.setRightCreditsPrice("0");
+			}
+			
 			journalDAO.insertJournal(journalBean);
+
+			if (journalBean.getJournalDetailList() != null) {
+				for (JournalDetailBean journalDetailBean : journalBean.getJournalDetailList()) {
+					journalDetailBean.setJournalNo(journalNo);
+					System.out.println(journalDetailBean);
+
+					journalDAO.insertJournalDetailList(journalDetailBean);
+				}
+			}
 		}
 	}
 
@@ -143,15 +160,11 @@ public class BusinessServiceImpl implements BusinessService {
 	public void removeSlip(String slipNo) {
 
 		ArrayList<JournalBean> list = journalDAO.selectJournalList(slipNo);
-		for (JournalBean journal : list) {
-			System.out.println("removeSlip@@@@ :" + journal.getJournalNo());
-		}
-		
-		journalDAO.deleteJournalAll(slipNo);
-//		for (JournalBean journal : list) {
-//			journalDAO.deleteJournalDetail(journal.getJournalNo());
-//		}
 
+		for (JournalBean journal : list) {
+			journalDAO.deleteJournalDetail(journal.getJournalNo());
+		}
+		journalDAO.deleteJournalAll(slipNo);
 
 		slipDAO.deleteSlip(slipNo);
 
@@ -169,7 +182,7 @@ public class BusinessServiceImpl implements BusinessService {
 
 				for (JournalDetailBean journalDetailBean : journalBean.getJournalDetailList()) {
 
-					journalDAO.updateJournalDetail(journalDetailBean);
+					journalDAO.updateJournalDetailList(journalDetailBean);
 				}
 			}
 		}
@@ -182,8 +195,8 @@ public class BusinessServiceImpl implements BusinessService {
 
 //		for (SlipBean slipBean : slipBeans) {
 //			slipBean.setSlipStatus(slipBean.getSlipStatus().equals("true") ? "승인완료" : "작성중(반려)");
-			slipApprovalAndReturnDAO.updateapproveSlip(slipBean);
-		
+		slipApprovalAndReturnDAO.updateapproveSlip(slipBean);
+
 	}
 
 	@Override
@@ -250,10 +263,10 @@ public class BusinessServiceImpl implements BusinessService {
 		slipDAO.updateSlip(slipBean);
 		for (JournalBean journalBean : slipBean.getJournalBean()) {
 			journalDAO.updateJournal(journalBean);
-//			if (journalBean.getJournalDetailList() != null)
-//				for (JournalDetailBean journalDetailBean : journalBean.getJournalDetailList()) { // 분개상세항목들
-//					journalDAO.updateJournalDetailList(journalDetailBean);
-//				}
+			if (journalBean.getJournalDetailList() != null)
+				for (JournalDetailBean journalDetailBean : journalBean.getJournalDetailList()) { // 분개상세항목들
+					journalDAO.updateJournalDetailList(journalDetailBean);
+				}
 		}
 	}
 
@@ -262,8 +275,8 @@ public class BusinessServiceImpl implements BusinessService {
 		// TODO Auto-generated method stub
 		System.out.println("AppServiceImp_approvalSlipRequest 시작");
 		slipDAO.updateSlipApproval(slipBean);
-		
-	}
+
+	} 
 
 	@Override
 	public ArrayList<JournalBean> findApprovalJournalList(String slipNo) {
@@ -275,5 +288,14 @@ public class BusinessServiceImpl implements BusinessService {
 	public ArrayList<JournalDetailBean> addJournalDetailList(String accountCode) {
 		// TODO Auto-generated method stub
 		return journalDAO.addJournalDetailList(accountCode);
+	}
+
+	@Override
+	public void tempModifyJournalDetail(ArrayList<JournalDetailBean> journalDetailBean) {
+		// TODO Auto-generated method stub
+		for (JournalDetailBean journalDetail : journalDetailBean) {
+			journalDetail.setJournalNo("temp");
+			journalDAO.insertJournalDetailTemp(journalDetail);
+		}
 	}
 }

@@ -28,6 +28,6 @@ public class SlipBean extends BaseBean {
     private String slipStatus;
     private String balanceDivision;
     private String positionCode;
-//    private String status;
+//    private String status;  
     private List<JournalBean> journalBean; 
 }

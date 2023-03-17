@@ -1,13 +1,12 @@
 package kr.co.seoulit.account.sys.base.service;
 
 
-import kr.co.seoulit.account.budget.formulation.entity.BudgetEntity;
+
 import kr.co.seoulit.account.sys.base.entity.PeriodEntity;
 import kr.co.seoulit.account.sys.base.repository.JpaPeriodRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -22,8 +21,10 @@ public class JpaPeriodServiceImpl implements JpaPeriodService{
     }
 
     @Override
-    public PeriodEntity findTPeriodNo(String yearFirst, String yearLast) {
-        PeriodEntity map = jpaPeriodRepository.findAccountPeriodNoByPeriodStartDateAndPeriodEndDate(yearFirst, yearLast);
+
+    public PeriodEntity findTPeriodNo(String periodStartDate,String periodEndDate) {
+        PeriodEntity map = jpaPeriodRepository.findAccountPeriodNoByPeriodStartDateAndPeriodEndDate(periodStartDate, periodEndDate);
+
         return map;
     }
 

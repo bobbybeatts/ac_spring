@@ -18,6 +18,8 @@ import kr.co.seoulit.account.operate.system.to.PeriodBean;
 import kr.co.seoulit.account.posting.business.to.SlipBean;
 import kr.co.seoulit.account.sys.base.mapper.*;
 import kr.co.seoulit.account.sys.base.to.*;
+import kr.co.seoulit.account.sys.base.mapper.DetailCodeMapper;
+import kr.co.seoulit.account.sys.base.to.DetailCodeBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -187,12 +189,11 @@ public class BaseServiceImpl implements BaseService {
 	}
 
 	@Override
-	public ArrayList<DetailCodeBean> findDetailCodeList(HashMap<String, String> param) {
-
+	public ArrayList<DetailCodeBean> findDetailCodeList(HashMap<String, Object> map) {
 
 		ArrayList<DetailCodeBean> datailCondeList = null;
-		datailCondeList = detailCodeDAO.selectDetailCodeList(param);
-
+		datailCondeList = detailCodeDAO.selectDetailCodeList(map);
+		System.out.println("임플ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ리먼트");
 		return datailCondeList;
 	}
 

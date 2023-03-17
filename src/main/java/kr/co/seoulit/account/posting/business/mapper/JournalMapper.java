@@ -29,7 +29,7 @@ public interface JournalMapper {
 
     public void deleteJournalDetailByJournalNo(String journalNo);
 
-    public void updateJournalDetail(JournalDetailBean journalDetailBean);
+    public void updateJournalDetailList(JournalDetailBean journalDetailBean);
 
     public void insertJournalDetailList(JournalDetailBean journalDetailBean);
 
@@ -39,4 +39,5 @@ public interface JournalMapper {
 
     public String selectJournalName(String slipNo);
     
+    public void insertJournalDetailTemp(JournalDetailBean journalDetailBean);
 }

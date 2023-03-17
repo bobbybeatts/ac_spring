@@ -64,7 +64,7 @@
                 #{slipStatus},
                 #{approvalEmpCode},
                 #{approvalDate})
-        ]]>+
+        ]]>
 	</insert>
 	<update id="updateapproveSlip"
 		parameterType="kr.co.seoulit.account.posting.business.to.SlipBean">

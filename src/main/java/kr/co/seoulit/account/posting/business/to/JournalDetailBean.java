@@ -13,7 +13,7 @@ public class JournalDetailBean extends BaseBean {
     private String journalDetailNo;
     private String accountControlName;
     private String accountControlType;
-    private String journalDescription;
+    private String description;
     private String accountControlDescription;
     private String journalNo;
     private String accountControlCode;
@@ -52,11 +52,11 @@ public class JournalDetailBean extends BaseBean {
     }
 
     public String getJournalDescription() {
-        return journalDescription;
+        return description;
     }
 
     public void setJournalDescription(String journalDescription) {
-        this.journalDescription = journalDescription;
+        this.description = journalDescription;
     }
 
     public String getAccountControlDescription() {

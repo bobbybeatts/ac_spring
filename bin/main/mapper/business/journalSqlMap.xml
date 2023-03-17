@@ -195,9 +195,25 @@
 					DESCRIPTION
 				)VALUES(
 					#{journalNo},
+					JOURNAL_DD_SEQ.NEXTVAL,
+					#{accountControlCode},
+					#{description}
+				)
+ 		]]>
+	</insert>
+	<insert id="insertJournalDetailTemp"
+		parameterType="kr.co.seoulit.account.posting.business.to.JournalDetailBean">
+		<![CDATA[
+				INSERT INTO JOURNAL_DETAIL(
+	 				
+					JOURNAL_DETAIL_NO,
+					ACCOUNT_CONTROL_CODE,
+					DESCRIPTION
+				)VALUES(
+					
 					JOURNAL_DETAIL_NO_SEQUENCES.NEXTVAL,
 					#{accountControlCode},
-					#{journalDescription}
+					#{description}
 				)
  		]]>
 	</insert>

@@ -29,14 +29,15 @@ public class JournalDetailController {
 
 	ModelAndView mav = null;
 	ModelMap map = new ModelMap();
-
+//분개상세 추가
 	@GetMapping("/journaldetailAdd")
 	public ArrayList<JournalDetailBean> addJournalDetailList(@RequestParam String accountCode) {
 
 		ArrayList<JournalDetailBean> journalDetailList = businessService.addJournalDetailList(accountCode);
 		return journalDetailList;
 	}
-
+//분개 상세 조회
+	
 	@GetMapping("/journaldetaillist")
 	public ArrayList<JournalDetailBean> findJournalDetailList(@RequestParam("journalNo") String journalNo) {
 
@@ -44,7 +45,14 @@ public class JournalDetailController {
 
 		return journalDetailList;
 	}
-
+//분개 상세 임시 저장
+	@PostMapping("/SaveJournalDetailList")
+	public void tempModifyJournalDetail(@RequestBody ArrayList<JournalDetailBean> journalDetailBean) {
+		System.out.println(journalDetailBean);
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		businessService.tempModifyJournalDetail(journalDetailBean);
+	}
+//분개 상세 저장
 	@GetMapping("/journaldetailmodification")
 	public void modifyJournalDetail(@RequestParam String accountControlType, @RequestParam String journalNo,
 			@RequestParam(value = "journalDetailNo", required = false) String journalDetailNo,

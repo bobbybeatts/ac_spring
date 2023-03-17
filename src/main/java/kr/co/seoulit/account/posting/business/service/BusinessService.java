@@ -52,6 +52,7 @@ public interface BusinessService {
 	
 	public ArrayList<JournalBean> findApprovalJournalList(String slipNo);
 	
+	public void tempModifyJournalDetail(ArrayList<JournalDetailBean> journalDetailBean);
 	
 }
 

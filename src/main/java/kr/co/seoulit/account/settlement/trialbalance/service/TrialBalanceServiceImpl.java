@@ -31,11 +31,12 @@ public class TrialBalanceServiceImpl implements TrialBalanceService{
     
     @Override
 	public HashMap<String, Object> findEarlyStatements(HashMap<String,Object> params) {
-
+    		System.out.println(params);
     		 HashMap<String, Object> earlyledgersList = null;
-	    	 earlyledgersList = totalTrialBalanceDAO.selectcallEarlyStatements(params);
-
-	     return earlyledgersList;
+//	    	 earlyledgersList = totalTrialBalanceDAO.selectcallEarlyStatements(params);
+//
+//	     return earlyledgersList;
+    		 return null;
 	 }
     
     @Override

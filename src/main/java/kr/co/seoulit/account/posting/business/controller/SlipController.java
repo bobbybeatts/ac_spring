@@ -54,7 +54,7 @@ public class SlipController {
 		map.put("toDate", toDate);
 		map.put("slipStatus", slipStatus);
 		ArrayList<SlipBean> slipFormList = businessService.findRangedSlipList(map);
-
+		System.out.println(slipFormList);
 		return slipFormList;
 	}
 
@@ -85,15 +85,9 @@ public class SlipController {
 	// =======================전표 저장==========================
 	@PostMapping("/registerslip")
 	public void registerSlip(@RequestBody SlipBean slipBean) {
+		System.out.println(slipBean);
 		slipBean.setSlipStatus(slipBean.getSlipStatus());
-
-		for (JournalBean journalBean : slipBean.getJournalBean()) {
-			if (journalBean.getLeftDebtorPrice() == null) {
-				journalBean.setLeftDebtorPrice("0");
-			} else if (journalBean.getRightCreditsPrice() == null) {
-				journalBean.setRightCreditsPrice("0");
-			}
-		}
+		
 		businessService.registerSlip(slipBean);
 	}
 

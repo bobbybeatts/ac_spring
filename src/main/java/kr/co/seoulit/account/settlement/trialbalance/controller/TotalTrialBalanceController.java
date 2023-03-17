@@ -33,16 +33,18 @@ public class TotalTrialBalanceController {
 //	}
 
 	@GetMapping("/earlyStatements")
-	public HashMap<String, Object> finddoClosing(@RequestParam("accountPeriodNo") String accountPeriodNo,
-			@RequestParam("callResult") String callResult) {
+	public HashMap<String, Object> finddoClosing(@RequestParam String accountPeriodNo,
+			@RequestParam String callResult) {
+		System.out.println(accountPeriodNo);
+		System.out.println(callResult);
+//		HashMap<String, Object> params = new HashMap<>();
+//		params.put("accountPeriodNo", accountPeriodNo);
+//		params.put("callResult", callResult);
 
-		HashMap<String, Object> params = new HashMap<>();
-		params.put("accountPeriodNo", accountPeriodNo);
-		params.put("callResult", callResult);
-
-		HashMap<String, Object> closingResult = trialBalanceService.findEarlyStatements(params);
-
-		return closingResult;
+//		HashMap<String, Object> closingResult = trialBalanceService.findEarlyStatements(params);
+//
+//		return closingResult;
+		return null;
 	}
 //
 //	@GetMapping("/searchTotalTrialBalance")
@@ -59,17 +61,16 @@ public class TotalTrialBalanceController {
 //
 //		return map;
 //	}
-	
+
 	@GetMapping("/searchTotalTrialBalance")
 	public ArrayList<TotalTrialBalanceBean> searchTotalTrialBalance(@RequestParam String accountPeriodNo) {
 		System.out.println(accountPeriodNo);
 		HashMap<String, Object> map = new HashMap<>();
-			map.put("accountPeriodNo", accountPeriodNo);
-			ArrayList<TotalTrialBalanceBean> totaltrialList = trialBalanceService.searchTotalTrialBalance(map);
+		map.put("accountPeriodNo", accountPeriodNo);
+		ArrayList<TotalTrialBalanceBean> totaltrialList = trialBalanceService.searchTotalTrialBalance(map);
 
 		return totaltrialList;
 	}
-	
 
 	@GetMapping("/totaltrialbalance")
 	public HashMap<String, Object> findTotalTrialBalance(@RequestParam("accountPeriodNo") String accountPeriodNo,

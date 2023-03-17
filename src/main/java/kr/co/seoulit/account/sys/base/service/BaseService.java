@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.co.seoulit.account.operate.system.to.PeriodBean;
 import kr.co.seoulit.account.sys.base.to.*;
+import kr.co.seoulit.account.sys.base.to.DetailCodeBean;
 
 import kr.co.seoulit.account.operate.system.to.AuthorityEmpBean;
 import kr.co.seoulit.account.sys.base.exception.DeptCodeNotFoundException;
@@ -22,7 +23,7 @@ public interface BaseService {
 
 	public ArrayList<MenuBean> findUserMenuList(String deptCode);
 
-	public ArrayList<DetailCodeBean> findDetailCodeList(HashMap<String, String> param);
+	public ArrayList<DetailCodeBean> findDetailCodeList(HashMap<String, Object> map);
 
 	public ArrayList<CodeBean> findCodeList();
 
