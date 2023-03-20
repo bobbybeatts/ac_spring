@@ -19,7 +19,8 @@ public class FinancialPositionController {
 	 @GetMapping("/financialposition")
     public HashMap<String, Object> handleRequestInternal(@RequestParam("accountPeriodNo") String accountPeriodNo,
     								          			 @RequestParam("callResult") String callResult) {
-      
+      System.out.println(accountPeriodNo);
+      System.out.println(callResult);
     	HashMap<String, Object> map = new HashMap<>();
 
 		try {
@@ -30,6 +31,7 @@ public class FinancialPositionController {
 			map.put("errorCode", -1);
 			map.put("errorMsg", e.getMessage());
 		}
+		System.out.println(map);
         return map;
     }
 

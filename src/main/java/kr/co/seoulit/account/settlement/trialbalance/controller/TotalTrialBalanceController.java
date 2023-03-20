@@ -75,8 +75,6 @@ public class TotalTrialBalanceController {
 	@GetMapping("/totaltrialbalance")
 	public HashMap<String, Object> findTotalTrialBalance(@RequestParam("accountPeriodNo") String accountPeriodNo,
 			@RequestParam("callResult") String callResult) {
-System.out.println(accountPeriodNo);
-System.out.println(callResult);
 		HashMap<String, Object> map = new HashMap<>();
 		try {
 			HashMap<String, Object> totaltrialList = trialBalanceService.findTotalTrialBalance(accountPeriodNo,
@@ -88,7 +86,6 @@ System.out.println(callResult);
 		}
 
 		return map;
-//		return null;
 	}
 
 	@PostMapping("/totaltrialbalancecancle")
