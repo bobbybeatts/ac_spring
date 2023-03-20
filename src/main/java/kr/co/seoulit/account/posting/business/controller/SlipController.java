@@ -85,7 +85,6 @@ public class SlipController {
 	// =======================전표 저장==========================
 	@PostMapping("/registerslip")
 	public void registerSlip(@RequestBody SlipBean slipBean) {
-		System.out.println(slipBean);
 		slipBean.setSlipStatus(slipBean.getSlipStatus());
 		
 		businessService.registerSlip(slipBean);
